@@ -1,7 +1,6 @@
-public class emailSender {
-    import javax.mail.*;
-    import javax.mail.internet.*;
-    import java.util.Properties;
+import javax.mail.*;
+import javax.mail.internet.*;
+import java.util.Properties;
 
     public class emailSender{
         public static void sendEmail(String recipient, String link) {
@@ -18,6 +17,7 @@ public class emailSender {
             final String companyEmailPass = "INST";     //FIXME
 
             Session authenticatedSession = Session.getInstance(emailProperties, new Authenticator() {
+                @Override
                 protected PasswordAuthentication getPasswordAuthentication () {
                     return new PasswordAuthentication(companyEmail, companyEmailPass);
                 }
@@ -26,4 +26,3 @@ public class emailSender {
             //Finish
         }
     }
-}
