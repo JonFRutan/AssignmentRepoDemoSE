@@ -7,7 +7,8 @@ const RegisterPage = () => {
         password: '',
         passwordConfirm: '',
         email: '',
-        phone: ''
+        phone: '',
+        birthday: ''
     });
 
     const handleChange = (e) => {
@@ -75,6 +76,17 @@ const RegisterPage = () => {
                         value={formData.password}
                         onChange={handleChange}
                         required 
+                    />
+                </div>
+                <div>
+                    <label htmlFor="birthday">Name:</label>
+                    <input
+                        type="text"
+                        id="birthday"
+                        name="birthday"
+                        value={formData.birthday}
+                        onChange={handleChange}
+                        required
                     />
                 </div>
                 <button type="submit">Submit</button>

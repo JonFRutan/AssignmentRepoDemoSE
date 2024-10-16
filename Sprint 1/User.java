@@ -10,45 +10,46 @@ public class User {
     private String email = "";
     private long phoneNumber = 0L;
     private String birthday = "";
+    private ArrayList<Medication> medsList = new ArrayList<Medication>();
     // private long NPI = 0L; <- not using this anymore
 
     // Getters and Setters
 
-     User () {
+    User () {
 
     }
 
-    User (String firstName, String lastName, String password, String email,long phoneNumber, String birthday) {
+    // User (String firstName, String lastName, String password, String email,long phoneNumber, String birthday) {
 
-         this.firstName = firstName;
-         this.lastName = lastName;
-         this.password = password;
-         this.email = email;
-         this.phoneNumber = phoneNumber;
-         this.birthday = birthday;
+    //      this.firstName = firstName;
+    //      this.lastName = lastName;
+    //      this.password = password;
+    //      this.email = email;
+    //      this.phoneNumber = phoneNumber;
+    //      this.birthday = birthday;
 
-    }
+    // }
 
-    User(String firstName, String lastName, String password, String email, String birthday){
+    // User(String firstName, String lastName, String password, String email, String birthday){
 
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.password = password;
-        this.email = email;
-        this.birthday = birthday;
+    //     this.firstName = firstName;
+    //     this.lastName = lastName;
+    //     this.password = password;
+    //     this.email = email;
+    //     this.birthday = birthday;
 
-    }
+    // }
 
 
-    User(String firstName, String lastName, String password, long phoneNumber, String birthday){
+    // User(String firstName, String lastName, String password, long phoneNumber, String birthday){
 
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.password = password;
-        this.phoneNumber = phoneNumber;
-        this.birthday = birthday;
+    //     this.firstName = firstName;
+    //     this.lastName = lastName;
+    //     this.password = password;
+    //     this.phoneNumber = phoneNumber;
+    //     this.birthday = birthday;
 
-    }
+    // }
     public boolean setPassword(String password){
 
          if(password != null && password.length() < 30 && password.length() > 10){
@@ -84,7 +85,6 @@ public class User {
          this.birthday = birthday;
          return true;
     }
-
     public boolean setPhoneNumber(long phoneNumber){
 
          if(phoneNumber > 9999999999L || phoneNumber < 100000000){
@@ -93,9 +93,23 @@ public class User {
          this.phoneNumber = phoneNumber;
          return true;
     }
-
     public String getPassword(){
          return password;
+    }
+
+    public boolean addMedication (String medName, int dosage){
+        if (medName == null || medName.equals("")) {
+            return false;
+        }
+        Medication meds = new(medName, dosage);
+        medsList.add(meds);
+        return true;
+    }
+    public boolean removeMedication (String medName) {
+        return this.medsList.remove(medName);
+    }
+    public void removeMedication (String name){
+        for(int i = 0; )
     }
 
     public String getFirstName(){
@@ -107,15 +121,10 @@ public class User {
     public String getEmail(){
          return email;
     }
-
     public String getBirthday(){
          return birthday;
     }
-
     public long getPhoneNumber(){
          return phoneNumber;
     }
-
-
-
 }
