@@ -108,9 +108,9 @@ public class User {
     public boolean removeMedication (String medName) {
         return this.medsList.remove(medName);
     }
-    public void removeMedication (String name){
+    /** public void removeMedication (String name){
         for(int i = 0; )
-    }
+    } **/
 
     public String getFirstName(){
          return firstName;
