@@ -5,7 +5,7 @@ My group members are:
 - Crystal Bagala
 - Abrar Rahman
 - Yanit Girmay
-
+- Maryam Amir
 
 ------------------ Fill in some information about your project under this ------------------
 

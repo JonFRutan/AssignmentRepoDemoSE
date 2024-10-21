@@ -141,21 +141,6 @@ public class User {
 
     /** public boolean removeMedication (String medName) {
         return this.medsList.remove(medName);
-    } **/
-
-    /**
-     *
-     * @param name
-     * @return
-     */
-    public boolean removeMedication (String name){
-        for(int i = 0; i < medsList.length; i++){
-            if(name == medsList.get(i)){
-                return medsList.remove(i);
-            }
-        }
-        return false;
-    }
 
     /**
      * Getters and setters for each

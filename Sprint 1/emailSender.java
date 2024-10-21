@@ -1,6 +1,4 @@
-    import javax.mail.*;
-    import javax.mail.internet.*;
-    import java.util.Properties;
+
 
     public class emailSender{
         public static void sendEmail(String customerEmail, String link) {
@@ -17,6 +15,7 @@
             final String companyEmailPass = "PleaseDontSteal!";
 
             Session authenticatedSession = Session.getInstance(emailProperties, new Authenticator() {
+                @Override
                 protected PasswordAuthentication getPasswordAuthentication () {
                     return new PasswordAuthentication(companyEmail, companyEmailPass);
                 }
