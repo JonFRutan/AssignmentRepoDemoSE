@@ -79,7 +79,18 @@ const RegisterPage = () => {
                     />
                 </div>
                 <div>
-                    <label htmlFor="birthday">Name:</label>
+                    <label htmlFor="password">Confirm Password:</label>
+                    <input
+                        type="passwordConfirm"
+                        id="passwordConfirm"
+                        name="passwordConfirm"
+                        value={formData.passwordConfirm}
+                        onChange={handleChange}
+                        required
+                    />
+                </div>
+                <div>
+                    <label htmlFor="birthday">Birthday:</label>
                     <input
                         type="text"
                         id="birthday"
