@@ -25,13 +25,13 @@
 
             Message confirmationEmail = new MimeMessage(authenticatedSession);
             confirmationEmail.setFrom(new InternetAddress(companyEmail));
-            confirmationEmail.setRecipients(Message.RecipientType.TO,InternetAddress.parse(customerEmail);
+            confirmationEmail.setRecipients(Message.RecipientType.TO,InternetAddress.parse(customerEmail));
                     //I think parse will take multiple args if you need to send multiple emails?(Check))
             confirmationEmail.setSubject("DO YOU WANT TO MAKE MONEY FAST!?!?");  //FIXME
 
             String emailContent=link;     //FIXME
 
-            message.setContent(emailContent, "text/html");
+            conrfirmationEmail.setContent(emailContent, "text/html");
 
             Transport.sendMessage(confirmationEmail);
             System.out.println("Sent!");
