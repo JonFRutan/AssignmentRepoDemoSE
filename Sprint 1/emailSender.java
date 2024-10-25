@@ -31,7 +31,7 @@
 
             String emailContent=link;     //FIXME
 
-            message.setContent(emailContent, "text/html");
+            confirmationEmail.setContent(emailContent, "text/html");
 
             Transport.sendMessage(confirmationEmail);
             System.out.println("Sent!");
