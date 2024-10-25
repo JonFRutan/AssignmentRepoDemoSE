@@ -71,9 +71,8 @@ public class User {
         if(firstName == null || firstName.equals("")) {
             return false;
         }
-        String temp = firstName.toLowercase().trim();
 
-        this.firstName = firstName.trim().substring(0,1).toUppercase() + firststName.trim().substring(1).toLowercase();
+        this.firstName = firstName.trim().substring(0,1).toUpperCase() + firststName.trim().substring(1).toLowerCase();
         return true;
     }
 
@@ -86,7 +85,7 @@ public class User {
         if(lastName == null || lastName.equals("")) {
             return false;
         }
-        this.lastName = lastName.trim().substring(0,1).toUppercase() + lastName.trim().substring(1).toLowercase();
+        this.lastName = lastName.trim().substring(0,1).toUpperCase() + lastName.trim().substring(1).toLowerCase();
         return true;
     }
 
