@@ -1,5 +1,6 @@
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.ArrayList;
 
 public class User {
 
@@ -71,9 +72,9 @@ public class User {
         if(firstName == null || firstName.equals("")) {
             return false;
         }
-        String temp = firstName.toLowercase().trim();
+        //String temp = firstName.toLowerCase().trim();
 
-        this.firstName = firstName.trim().substring(0,1).toUppercase() + firststName.trim().substring(1).toLowercase();
+        this.firstName = firstName.trim().substring(0,1).toUpperCase() + firststName.trim().substring(1).toLowerCase();
         return true;
     }
 
@@ -86,7 +87,7 @@ public class User {
         if(lastName == null || lastName.equals("")) {
             return false;
         }
-        this.lastName = lastName.trim().substring(0,1).toUppercase() + lastName.trim().substring(1).toLowercase();
+        this.lastName = lastName.trim().substring(0,1).toUpperCase() + lastName.trim().substring(1).toLowerCase();
         return true;
     }
 

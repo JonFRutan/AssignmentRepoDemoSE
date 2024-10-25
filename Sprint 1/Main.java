@@ -9,11 +9,14 @@ public class Main {
 
         //emailSender email = new emailSender();
         String name = "";
-        String password = "";
+        String password = "frog";
         String email = "";
         long phoneNumber = 0L;
         String birthday = "";
-        User.java user = new User.java(name, password, email, phoneNumber, birthday);
+        //User user = new User(name, password, email, phoneNumber, birthday);
+        User user = new User();
+
+
         System.out.println(user.getPassword());
 
 
