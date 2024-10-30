@@ -72,11 +72,7 @@ public class User {
         if(firstName == null || firstName.equals("")) {
             return false;
         }
-<<<<<<< HEAD
         //String temp = firstName.toLowerCase().trim();
-=======
->>>>>>> 3be5c79fc01bdeb24e9c224343ce396a95601c63
-
         this.firstName = firstName.trim().substring(0,1).toUpperCase() + firststName.trim().substring(1).toLowerCase();
         return true;
     }
