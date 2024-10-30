@@ -1,5 +1,6 @@
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.ArrayList;
 
 public class User {
 
@@ -67,11 +68,16 @@ public class User {
      * @param Firstname
      * @return
      */
-    public boolean setFirstName(String Firstname){
+    public boolean setFirstName(String firststName){
         if(firstName == null || firstName.equals("")) {
             return false;
         }
-        this.firstName = firstName;
+<<<<<<< HEAD
+        //String temp = firstName.toLowerCase().trim();
+=======
+>>>>>>> 3be5c79fc01bdeb24e9c224343ce396a95601c63
+
+        this.firstName = firstName.trim().substring(0,1).toUpperCase() + firststName.trim().substring(1).toLowerCase();
         return true;
     }
 
@@ -80,11 +86,11 @@ public class User {
      * @param LastName
      * @return
      */
-    public boolean setLastName(String LastName){
+    public boolean setLastName(String lastName){
         if(lastName == null || lastName.equals("")) {
             return false;
         }
-        this.lastName = lastName;
+        this.lastName = lastName.trim().substring(0,1).toUpperCase() + lastName.trim().substring(1).toLowerCase();
         return true;
     }
 
@@ -93,7 +99,7 @@ public class User {
      * @param email
      * @return
      */
-    public boolean setEmail(String email){
+    public boolean setEmail(String email) {
          this.email = email;
          return true;
     }
@@ -134,7 +140,7 @@ public class User {
         if (medName == null || medName.equals("")) {
             return false;
         }
-        Medication meds = new(medName, dosage);
+        Medication meds = new Medication(medName, dosage);
         medsList.add(meds);
         return true;
     }

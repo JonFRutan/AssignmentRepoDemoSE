@@ -16,7 +16,7 @@ public class Medication {
     }
 
     public int getDosage() {
-        return this.dosage.
+        return this.dosage = dosage;
     }
 
 }

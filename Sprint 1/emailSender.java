@@ -1,4 +1,6 @@
-
+import javax.mail.*;
+import javax.mail.internet.*;
+import java.util.Properties;
 
     public class emailSender{
         public static void sendEmail(String customerEmail, String link) {
@@ -16,25 +18,31 @@
 
             Session authenticatedSession = Session.getInstance(emailProperties, new Authenticator() {
                 @Override
-                protected PasswordAuthentication getPasswordAuthentication () {
+                protected PasswordAuthentication getPasswordAuthentication() {
                     return new PasswordAuthentication(companyEmail, companyEmailPass);
                 }
             });
 
-            //We should probably put this in a try/catch
+            try {
 
-            Message confirmationEmail = new MimeMessage(authenticatedSession);
-            confirmationEmail.setFrom(new InternetAddress(companyEmail));
-            confirmationEmail.setRecipients(Message.RecipientType.TO,InternetAddress.parse(customerEmail);
-                    //I think parse will take multiple args if you need to send multiple emails?(Check))
-            confirmationEmail.setSubject("DO YOU WANT TO MAKE MONEY FAST!?!?");  //FIXME
+                Message confirmationEmail = new MimeMessage(authenticatedSession);
+                confirmationEmail.setFrom(new InternetAddress(companyEmail));
+                confirmationEmail.setRecipients(Message.RecipientType.TO, InternetAddress.parse(customerEmail));
+                //I think parse will take multiple args if you need to send multiple emails?(Check))
+                confirmationEmail.setSubject("DO YOU WANT TO MAKE MONEY FAST!?!?");  //FIXME
 
-            String emailContent=link;     //FIXME
+                String emailContent = link;     //FIXME
 
-            confirmationEmail.setContent(emailContent, "text/html");
 
-            Transport.sendMessage(confirmationEmail);
-            System.out.println("Sent!");
+                confirmationEmail.setContent(emailContent, "text/html");
+
+
+                Transport.send(confirmationEmail);
+                System.out.println("Sent!");
+            }
+            catch (Exception e){
+                e.printStackTrace();
+            }
 
             //Finish
         }
