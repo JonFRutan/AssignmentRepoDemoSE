@@ -5,49 +5,36 @@ public class ReportLog{
     private int regimenSatisfaction = -1;
     private int socialQuality = -1;
 
-    public boolean ReportLog(int weight, String additionalObservations, int qualityOfLife, int regimenSatisfaction, int socialQuality){
-        if(checkMetric(qualityOfLife, regimenSatisfaction, socialQuality) && (checkWeight(weight))){
-            this.socialQuality = socialQuality;
-            this.qualityOfLife = qualityOfLife;
-            this.regimenSatisfaction = regimenSatisfaction;
-            this.weight = weight;
-            this.additionalObservations = additionalObservations;
-
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public boolean ReportLog(int weight, int qualityOfLife, int regimenSatisfaction, int socialQuality){
-        if(checkMetric(qualityOfLife, regimenSatisfaction, socialQuality) && (checkWeight(weight))){
-            this.socialQuality = socialQuality;
-            this.qualityOfLife = qualityOfLife;
-            this.regimenSatisfaction = regimenSatisfaction;
-            this.weight = weight;
-
-            return true;
-        } else {
-            return false;
-        }
-
-    }
-
-    public boolean ReportLog(String additionalObservations, int qualityOfLife, int regimenSatisfaction, int socialQuality){
+    public boolean ReportLog(int qualityOfLife, int regimenSatisfaction, int socialQuality){
         if(checkMetric(qualityOfLife, regimenSatisfaction, socialQuality)){
             this.socialQuality = socialQuality;
             this.qualityOfLife = qualityOfLife;
             this.regimenSatisfaction = regimenSatisfaction;
+            this.weight = weight;
 
             return true;
         } else {
             return false;
         }
 
-
     }
 
+    public boolean setAdditionalObservations(String statement){
+        if(statement == null){
+        return false;
+    }
+        additionalObservations = statement;
+        return true;
+    }
 
+    public boolean setWeight(int weight){
+        if(checkWeight(weight) == false){
+            return false;
+    }
+        this.weight = weight;
+        return true;
+    }
+    
     public boolean checkMetric(int socialQuality, int qualityOfLife, int regimenSatisfaction){
         int[] checkingMetric = {socialQuality, qualityOfLife, regimenSatisfaction};
         for(int i = 0; i < checkingMetric.length; i++){
