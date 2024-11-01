@@ -17,11 +17,16 @@ export default function Calendar () {
 			day
 		);
 
-		window.location.href = '/form?date=${selectedDate.toISOString()}';
+		window.location.href = '/loggingform?date=${selectedDate.toISOString()}';
 	};
 
 	return (
 		<div className="calendar">
-		
-	)
+			{[...Array(daysInMonth)].map((_, i) => (
+			<button key={i} onClick={() => handleDateClick(i+1)}>
+				{i + 1}
+			</button>
+		))}
+		</div>
+	);
 }
