@@ -1,4 +1,4 @@
-fimport java.util.regex.Matcher;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.ArrayList;
 
@@ -102,7 +102,7 @@ public class User {
      * @return boolean depending on if provided email is valid
      */
     public boolean setEmail(String email){
-        email = email.replace('@', '');
+        email = email.replace('@', "");
         char[] forbiddenChars = {':', ';', '<', '>', '&', '"', '\\', ',', '@', '`', '[', ']', '(', ')'};
         if(email == null || email.isEmpty() || !email.matches(globals.emailPattern) || Character.isDigit(email.charAt(0))){
             return false;
@@ -117,7 +117,7 @@ public class User {
                 return false;
             }
         }
-        this.email = email;
+        this.email = email.trim();
         return true;
     }
 
