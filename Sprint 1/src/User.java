@@ -103,7 +103,7 @@ public class User {
      */
     public boolean setEmail(String email){
         email.remove('@');
-        char[] forbiddenChars = {':', ';', '<', '>', '&', '"', '\', ',', '@', '`', '[', ']', '(', ')'};
+        char[] forbiddenChars = {':', ';', '<', '>', '&', '"', '\\', ',', '@', '`', '[', ']', '(', ')'};
         if(email == null || email.isEmpty() || !email.matches(globals.emailPattern) || Character.isDigit(email.charAt(0))){
             return false;
         }
