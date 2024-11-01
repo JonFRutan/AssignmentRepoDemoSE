@@ -14,7 +14,7 @@ import java.util.Properties;
             emailProperties.put("mail.smtp.port", "587");
 
             final String companyEmail = "StrictlyEthicalWebservices@gmail.com";
-            final String companyEmailPass = "hrhijpimlxqzznul";
+            final String companyEmailPass = "this should break";
 
             Session authenticatedSession = Session.getInstance(emailProperties, new Authenticator() {
                 @Override
