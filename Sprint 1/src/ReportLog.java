@@ -10,8 +10,7 @@ public class ReportLog{
             this.socialQuality = socialQuality;
             this.qualityOfLife = qualityOfLife;
             this.regimenSatisfaction = regimenSatisfaction;
-            this.weight = weight;
-
+        
             return true;
         } else {
             return false;
