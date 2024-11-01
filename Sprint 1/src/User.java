@@ -95,9 +95,29 @@ public class User {
      * @param email
      * @return
      */
-    public boolean setEmail(String email) {
-         this.email = email;
-         return true;
+    
+    /**
+     * New set email, might break via index out of boundds. 
+     * @param email
+     * @return boolean depending on if provided email is valid
+     */
+    public boolean setEmail(String email){
+        char[] forbiddenChars = {'!', '#', '$', '%', '&', '*', '+', '-', '/', '=', '?', '^', '_', '`', '{', '|', '}', '~'};
+        if(email == null || email.isEmpty() || !email.matches(emailPattern) || Character.isDigit(email.charAt(0))){
+            return false;
+        }
+        char[] temp = email.toCharArray();
+        
+        for(int i = 0; i < temp.length; i++){
+            if(temp[i] == '.' && temp[i+1] == '.'){
+                return false;
+            }
+            if(temp[i] == '_' && temp[i+1] == '_'){
+                return false;
+            }
+        }
+        this.email = email;
+        return true;
     }
 
     /**
