@@ -102,8 +102,9 @@ public class User {
      * @return boolean depending on if provided email is valid
      */
     public boolean setEmail(String email){
-        char[] forbiddenChars = {'!', '#', '$', '%', '&', '*', '+', '-', '/', '=', '?', '^', '_', '`', '{', '|', '}', '~'};
-        if(email == null || email.isEmpty() || !email.matches(emailPattern) || Character.isDigit(email.charAt(0))){
+        email.remove('@');
+        char[] forbiddenChars = {':', ';', '<', '>', '&', '"', '\\', ',', '@', '`', '[', ']', '(', ')'};
+        if(email == null || email.isEmpty() || !email.matches(globals.emailPattern) || Character.isDigit(email.charAt(0))){
             return false;
         }
         char[] temp = email.toCharArray();
