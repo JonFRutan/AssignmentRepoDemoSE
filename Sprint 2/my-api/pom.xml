@@ -61,6 +61,7 @@
             <artifactId>maven-compiler-plugin</artifactId>
             <version>3.11.0</version>
             <configuration>
+            	<mainClass>App</mainClass>
                 <source>22</source>
                 <target>22</target>
             </configuration>

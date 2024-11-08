@@ -1,7 +1,7 @@
 Medication.class
 ReportLog.class
-Main.class
 globals.class
+testMain.class
 com\example\App.class
 emailSender$1.class
 User.class
