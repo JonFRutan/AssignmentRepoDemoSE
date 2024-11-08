@@ -19,7 +19,6 @@ public class Main {
 
         System.out.println(user.getPassword());
 
-
         emailSender.sendEmail("gageswanston@gmail.com", "TEST");
 
 
