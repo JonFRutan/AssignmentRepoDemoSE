@@ -2,13 +2,13 @@ import { h } from "preact";
 import { useState } from "preact/hooks";
 
 export default function LoggingForm() {
-	const [painLevel, setPainLevel] = useState(5);
+	const [painLevel, setPainLevel] = useState(1);
 	const [qualityOfLife, setQualityOfLife] = useState(5);
 	const [satisfaction, setSatisfaction] = useState(5);
 	const [socialQuality, setSocialQuality] = useState(5);
 	const [additionalObservations, setAdditionalObservations] = useState("");
 
-	const handleSubmit = (event) => {
+	const handleSubmit = async (event) => {
 		event.preventDefault();
 
 		// Form values
@@ -19,8 +19,24 @@ export default function LoggingForm() {
 			social_quality: socialQuality,
 			additional_observations: additionalObservations,
 		};
+		try {
+		//FIXME - replace "log-submit" with the actual endpoint defined by @RequestMapping
+			const response = await fetch('/api/logs/submit-form', {
+				method: 'POST',
+				headers: {
+					'Content-Type': "application/json",
+				},
+				body: JSON.stringify(log),
+			});
 
-		console.log("Form Submitted: ", log);
+			if (response.ok) {
+				console.log("Successful submission");
+			} else {
+				console.error('Failed to submit', response.statusText);
+			}
+		} catch (error) {
+			console.error('Error occured: ', error);
+		}
 	};
 
 	return (

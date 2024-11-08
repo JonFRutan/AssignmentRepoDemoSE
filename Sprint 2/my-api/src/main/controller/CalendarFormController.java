@@ -1,10 +1,9 @@
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/logs")
 
 public class CalendarFormController {
-
 	@PostMapping("/submit-form")
 	public String handleFormSubmission(@RequestBody ReportLog reportLog) {
 		doStuff(reportLog);
