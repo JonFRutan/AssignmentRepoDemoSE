@@ -6,6 +6,10 @@ public class ReportLog{
     private int regimenSatisfaction = -1;
     private int socialQuality = -1;
 
+    public ReportLog(){
+
+    }
+
     public boolean ReportLog(int qualityOfLife, int regimenSatisfaction, int socialQuality){
         if(checkMetric(qualityOfLife, regimenSatisfaction, socialQuality)){
             this.socialQuality = socialQuality;
