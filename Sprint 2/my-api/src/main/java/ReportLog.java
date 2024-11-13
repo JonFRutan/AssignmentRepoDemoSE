@@ -1,3 +1,4 @@
+package cmsc.app;
 public class ReportLog{
     private int weight = -1; //optional
     private String additionalObservations = "";
@@ -49,6 +50,10 @@ public class ReportLog{
             return false;
         }
         return true;
+    }
+
+    public String getValues() {
+        return "Social: " + this.socialQuality + " QoL:" + this.qualityOfLife + " regSat: " + this.regimenSatisfaction + " Other: " + this.additionalObservations;
     }
 
 }

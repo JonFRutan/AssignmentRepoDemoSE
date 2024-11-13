@@ -21,7 +21,7 @@ export default function LoggingForm() {
 		};
 		try {
 		//FIXME - replace "log-submit" with the actual endpoint defined by @RequestMapping
-			const response = await fetch('/api/logs/submit-form', {
+			const response = await fetch('http://localhost:8000/api/logs/submit-form', {
 				method: 'POST',
 				headers: {
 					'Content-Type': "application/json",

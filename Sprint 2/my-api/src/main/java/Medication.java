@@ -1,3 +1,5 @@
+package cmsc.app;
+
 public class Medication {
     private String name;
     private int dosage;
