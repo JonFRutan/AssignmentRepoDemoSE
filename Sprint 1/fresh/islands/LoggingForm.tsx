@@ -2,14 +2,16 @@ import { h } from "preact";
 import { useState } from "preact/hooks";
 
 export default function LoggingForm() {
-	const [painLevel, setPainLevel] = useState(1);
-	const [qualityOfLife, setQualityOfLife] = useState(5);
-	const [satisfaction, setSatisfaction] = useState(5);
-	const [socialQuality, setSocialQuality] = useState(5);
+	const [painLevel, setPainLevel] = useState(0);
+	const [qualityOfLife, setQualityOfLife] = useState(0);
+	const [satisfaction, setSatisfaction] = useState(0);
+	const [socialQuality, setSocialQuality] = useState(0);
 	const [additionalObservations, setAdditionalObservations] = useState("");
+	const [weight, setWeight] = useState(0);
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();
+		const errors: string[] = [];
 
 		// Form values
 		const log = {
@@ -19,26 +21,42 @@ export default function LoggingForm() {
 			social_quality: socialQuality,
 			additional_observations: additionalObservations,
 		};
-		try {
-		//FIXME - replace "log-submit" with the actual endpoint defined by @RequestMapping
-			const response = await fetch('http://localhost:8000/api/logs/submit-form', {
-				method: 'POST',
-				headers: {
-					'Content-Type': "application/json",
-				},
-				body: JSON.stringify(log),
-			});
-
-			if (response.ok) {
-				console.log("Successful submission");
-			} else {
-				console.error('Failed to submit', response.statusText);
-			}
-		} catch (error) {
-			console.error('Error occured: ', error);
+		if (log.pain_level == 0) {
+			errors.push("Please select a pain level.");
 		}
-	};
+		if (log.quality_of_life == 0) {
+			errors.push("Please select a quality of life level.");
+		}
+		if (log.satisfaction == 0) {
+			errors.push("Please select a satisfaction level.");
+		}
+		if (log.social_quality == 0) {
+			errors.push("Please select a social quality level.");
+		}
+		if (errors.length > 0) {
+			alert(errors.join("\n"));
+		}
+		else {
+			try {
+				const response = await fetch('http://localhost:8000/api/logs/submit-form', {
+					method: 'POST',
+					headers: {
+						'Content-Type': "application/json",
+					},
+					body: JSON.stringify(log),
+				});
 
+				if (response.ok) {
+					console.log(JSON.stringify(log));
+					console.log("Successful submission");
+				} else {
+					console.error('Failed to submit', response.statusText);
+				}
+			} catch (error) {
+				console.error('Error occured: ', error);
+			}
+		};
+}
 	return (
 		<form
 			onSubmit={handleSubmit}
@@ -51,12 +69,13 @@ export default function LoggingForm() {
 				backgroundColor: "#ffccff",
 				padding: "20px",
 				borderRadius: "10px",
+				fontFamily: "Arial"
 			}}
 		>
-			<h2 style={{ textAlign: "center" }}>Logging Form</h2>
+			<h2 style={{ textAlign: "center", fontSize: "1.7rem" }}>Logging Form</h2>
 
-			<label style={{ fontSize: "1.2rem" }}>
-				Pain Level:
+			<label style={{ fontSize: "1.2rem", textAlign: "center" }}>
+				*Pain Level:
 				<input
 					type="range"
 					name="painLevel"
@@ -69,8 +88,8 @@ export default function LoggingForm() {
 				<span>{painLevel}</span>
 			</label>
 
-			<label style={{ fontSize: "1.2rem" }}>
-				Quality of Life:
+			<label style={{ fontSize: "1.2rem", textAlign: "center" }}>
+				*Quality of Life:
 				<input
 					type="range"
 					name="qualityOfLife"
@@ -83,8 +102,8 @@ export default function LoggingForm() {
 				<span>{qualityOfLife}</span>
 			</label>
 
-			<label style={{ fontSize: "1.2rem" }}>
-				Regimen Satisfaction:
+			<label style={{ fontSize: "1.2rem", textAlign: "center" }}>
+				*Regimen Satisfaction:
 				<input
 					type="range"
 					name="satisfaction"
@@ -97,8 +116,8 @@ export default function LoggingForm() {
 				<span>{satisfaction}</span>
 			</label>
 
-			<label style={{ fontSize: "1.2rem" }}>
-				Social Quality:
+			<label style={{ fontSize: "1.2rem", textAlign: "center" }}>
+				*Social Quality:
 				<input
 					type="range"
 					name="socialQuality"
@@ -109,6 +128,25 @@ export default function LoggingForm() {
 					style={{ width: "100%" }}
 				/>
 				<span>{socialQuality}</span>
+			</label>
+			
+			<label style={{ fontSize: "1.2rem" }}>
+				How much do you weigh:
+				<input
+					type="number"
+					name="weight"
+					max="1000"
+					min="50"
+					value={weight}
+					onInput={(e) => setWeight(e.target.value)}
+					style={{
+						width: "100%",
+						marginTop: "0.5rem",
+						padding: "0.5rem",
+						borderRadius: "0.4rem",
+						fontSize: "1rem",
+					}}
+				/>
 			</label>
 
 			<label style={{ fontSize: "1.2rem" }}>

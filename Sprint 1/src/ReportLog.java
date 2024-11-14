@@ -1,9 +1,13 @@
 public class ReportLog{
-    private int weight = -1; //optional
-    private String additionalObservations = "";
-    private int qualityOfLife = -1;
-    private int regimenSatisfaction = -1;
-    private int socialQuality = -1;
+    private int weight = 0; //optional
+    private String additionalObservations = ""; //optional
+    private int qualityOfLife = 0;
+    private int regimenSatisfaction = 0;
+    private int socialQuality = 0;
+
+    public ReportLog() {
+
+    }
 
     public boolean ReportLog(int qualityOfLife, int regimenSatisfaction, int socialQuality){
         if(checkMetric(qualityOfLife, regimenSatisfaction, socialQuality)){
@@ -17,6 +21,8 @@ public class ReportLog{
         }
 
     }
+
+
 
     public boolean setAdditionalObservations(String statement){
         if(statement == null){
