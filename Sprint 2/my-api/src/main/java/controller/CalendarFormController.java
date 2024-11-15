@@ -17,6 +17,5 @@ public class CalendarFormController {
 
 	private void doStuff(ReportLog reportLog) {
 		System.out.println("Hello, ReportLog!");
-		System.out.println(reportLog.getValues());
 	}
 }

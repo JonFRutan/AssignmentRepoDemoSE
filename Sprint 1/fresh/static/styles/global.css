@@ -1,0 +1,86 @@
+.calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  padding: 20px;
+}
+
+.calendar-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;  /* Center the month name and calendar horizontally */
+  gap: 20px;
+  padding: 20px;
+}
+
+.calendar-dag {
+  padding: 30px;
+  background-color: #ffffff;
+  color: black;
+  border: solid;
+  border-width: thin;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.calendar-day {
+  position: relative;  /* Allow absolutely positioned children to be positioned within the button */
+  width: 80px;
+  height: 80px;
+  background-color: #ffffff;
+  color: #333;
+  border: solid;
+  border-width: thin;
+  text-align: center;
+  transition: background-color 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.calendar-day:hover {
+  background-color: #00ed63;
+}
+
+.past-date {
+  background-color: #212024;
+  color: #777;
+}
+
+.calendar-day:disabled {
+  opacity: 1;
+}
+
+.calendar-day:disabled:hover {
+  transition: background-color 0.3s;
+  background-color: #212024;
+}
+
+.month-name {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 10px;
+  justify-content: center;
+}
+
+.current-date {
+  background-color: #7ddba4;
+  cursor: pointer;
+}
+
+.current-day-image,
+.completed-day-image {
+  position: absolute;
+  bottom: 2px;
+  right: 1px;
+  width: 32px;
+  height: 32px;
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+.completed-date {
+  background-color: #87deab;
+  cursor: not-allowed;
+}

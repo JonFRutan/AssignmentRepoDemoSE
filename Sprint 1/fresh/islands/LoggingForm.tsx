@@ -20,6 +20,7 @@ export default function LoggingForm() {
 			satisfaction: satisfaction,
 			social_quality: socialQuality,
 			additional_observations: additionalObservations,
+			weight: weight,
 		};
 		if (log.pain_level == 0) {
 			errors.push("Please select a pain level.");
@@ -32,6 +33,9 @@ export default function LoggingForm() {
 		}
 		if (log.social_quality == 0) {
 			errors.push("Please select a social quality level.");
+		}
+		if (weight != 0 && weight < 50) {
+			errors.push("Invalid weight: must be between 50-1000 lbs");
 		}
 		if (errors.length > 0) {
 			alert(errors.join("\n"));
@@ -46,9 +50,21 @@ export default function LoggingForm() {
 					body: JSON.stringify(log),
 				});
 
-				if (response.ok) {
-					console.log(JSON.stringify(log));
-					console.log("Successful submission");
+            if (response.ok) {
+                console.log(JSON.stringify(log));
+                console.log("Successful submission");
+                alert("Successfully submitted log!");
+
+                // Mark the date as completed in localStorage
+                const urlParams = new URLSearchParams(window.location.search);
+                const date = urlParams.get('date');
+                if (date) {
+                    const storedCompletedDays = JSON.parse(localStorage.getItem("completedDays") || "[]");
+                    storedCompletedDays.push(date);
+                    localStorage.setItem("completedDays", JSON.stringify(storedCompletedDays));
+                }
+
+                window.location.href = "/logCalendar";
 				} else {
 					console.error('Failed to submit', response.statusText);
 				}
@@ -136,7 +152,7 @@ export default function LoggingForm() {
 					type="number"
 					name="weight"
 					max="1000"
-					min="50"
+					min="0"
 					value={weight}
 					onInput={(e) => setWeight(e.target.value)}
 					style={{
