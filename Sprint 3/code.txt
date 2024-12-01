@@ -1,0 +1,2 @@
+All of the code for sprint 3 is within the Sprint 1 folder, since it's all handled through deno and must be located in the same area.
+  Sorry about the loud video by the way.
