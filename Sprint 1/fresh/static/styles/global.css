@@ -82,5 +82,23 @@
 
 .completed-date {
   background-color: #87deab;
-  cursor: not-allowed;
+}
+
+.submit-button {
+  width: 100px;
+  height: 60px;
+  background-color: #791010;
+  color: #ffffff;
+  border: solid;
+  border-width: thin;
+  border-radius: 3px;
+  text-align: center;
+}
+
+.selected-date {
+  background-color: #791010
+}
+.selected-date:hover {
+  transition: background-color 0.3s;
+  background-color: #e92222
 }

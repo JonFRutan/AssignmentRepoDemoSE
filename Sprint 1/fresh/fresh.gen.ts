@@ -11,10 +11,13 @@ import * as $index from "./routes/index.tsx";
 import * as $logCalendar from "./routes/logCalendar.tsx";
 import * as $loggingform from "./routes/loggingform.tsx";
 import * as $register from "./routes/register.tsx";
+import * as $retrieve from "./routes/retrieve.tsx";
 import * as $Calendar from "./islands/Calendar.tsx";
+import * as $ChartIsland from "./islands/ChartIsland.tsx";
 import * as $Counter from "./islands/Counter.tsx";
 import * as $LoggingForm from "./islands/LoggingForm.tsx";
 import * as $RegisterForm from "./islands/RegisterForm.tsx";
+import * as $RetrievalLog from "./islands/RetrievalLog.tsx";
 import type { Manifest } from "$fresh/server.ts";
 
 const manifest = {
@@ -28,12 +31,15 @@ const manifest = {
     "./routes/logCalendar.tsx": $logCalendar,
     "./routes/loggingform.tsx": $loggingform,
     "./routes/register.tsx": $register,
+    "./routes/retrieve.tsx": $retrieve,
   },
   islands: {
     "./islands/Calendar.tsx": $Calendar,
+    "./islands/ChartIsland.tsx": $ChartIsland,
     "./islands/Counter.tsx": $Counter,
     "./islands/LoggingForm.tsx": $LoggingForm,
     "./islands/RegisterForm.tsx": $RegisterForm,
+    "./islands/RetrievalLog.tsx": $RetrievalLog,
   },
   baseUrl: import.meta.url,
 } satisfies Manifest;
